@@ -1,0 +1,20 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+
+# Local secrets and settings
+.env
+.env.*
+!.env.example
+
+# Local editor settings
+.vscode/
+.cursor/
+
+# Local build artifacts
+build/
