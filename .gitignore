@@ -1,20 +1,20 @@
-# Python cache files
-__pycache__/
-*.py[cod]
-.pytest_cache/
-
-# Virtual environments
+build/
 .venv/
-venv/
-
-# Local secrets and settings
+__pycache__/
+.pytest_cache/
+.gravity/
 .env
+
+desktop.ini
+
+.cursor/
+
+# Python bytecode
+*.py[cod]
+
+# Local environment and secrets
 .env.*
 !.env.example
 
 # Local editor settings
 .vscode/
-.cursor/
-
-# Local build artifacts
-build/
