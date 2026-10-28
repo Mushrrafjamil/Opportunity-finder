@@ -1,0 +1,12 @@
+build/
+.venv/
+__pycache__/
+.pytest_cache/
+.gravity/
+.env
+
+desktop.ini
+
+.cursor/
+
+*.backup

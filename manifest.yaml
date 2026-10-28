@@ -1,0 +1,73 @@
+
+contract: v1
+name: opportunity-finder
+version: 1.0.1
+description: "A personalized job scout that finds and compares source-backed opportunities across industries."
+
+runtime:
+  framework: langgraph
+  python: "3.12"
+  entrypoint: src/agent.py:graph
+  timeout_seconds: 300
+
+dependencies:
+  lockfile: requirements.lock
+
+inputs:
+  - name: job_goal
+    type: text
+    label: "What kind of work are you looking for? Name a role or say you are open to any field."
+    required: true
+
+  - name: background
+    type: textarea
+    label: "What are your skills, education, experience, projects, or other strengths?"
+    required: true
+
+  - name: location
+    type: text
+    label: "Where would you like to work? Include your country and city or say worldwide remote."
+    required: true
+
+  - name: work_arrangement
+    type: static-dropdown
+    label: "Which work arrangement do you prefer?"
+    options: [remote, hybrid, on-site, any]
+    required: true
+
+  - name: opportunity_type
+    type: multi-select
+    label: "Which opportunity types would you consider?"
+    options: [internship, part-time, full-time, contract, temporary, any]
+    min: 1
+    required: true
+
+  - name: minimum_monthly_income
+    type: number
+    label: "What is your minimum acceptable monthly income? Enter 0 if flexible."
+    required: true
+
+  - name: query
+    type: textarea
+    label: "Any additional preferences, constraints, or instructions?"
+    required: false
+
+permissions:
+  tools:
+    - example.echo
+    - web.search
+    - web.fetch
+    - web.fetch_proxied
+  models:
+    tier: standard
+
+resources:
+  memory_mb: 512
+
+actions:
+  - name: answer
+    label: "Find suitable opportunities"
+    default: true
+
+  - name: web_probe
+    label: "Probe public job pages"
